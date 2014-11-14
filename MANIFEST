@@ -21,7 +21,6 @@ Java/Server.pm
 Java/JNI.pm
 Java/JNI.xs
 Java/typemap
-Java/jvm.def
 Java/sources/org/perl/inline/java/InlineJavaArray.java
 Java/sources/org/perl/inline/java/InlineJavaCastException.java
 Java/sources/org/perl/inline/java/InlineJavaClass.java
