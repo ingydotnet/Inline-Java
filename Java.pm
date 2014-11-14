@@ -1,25 +1,19 @@
-package Inline::Java ;
-@Inline::Java::ISA = qw(Inline Exporter) ;
-
-# Export the cast function if wanted
-@EXPORT_OK = qw(cast coerce study_classes caught jar j2sdk) ;
-
+package Inline::Java;
 
 use strict ;
 require 5.006 ;
 
-$Inline::Java::VERSION = '0.540' ;
+use base qw(Inline Exporter) ;
 
+# Export the cast function if wanted
+our @EXPORT_OK = qw(cast coerce study_classes caught jar j2sdk) ;
+our $VERSION = '0.55' ;
 
 # DEBUG is set via the DEBUG config
-if (! defined($Inline::Java::DEBUG)){
-	$Inline::Java::DEBUG = 0 ;
-}
+our $DEBUG = 0 unless defined $DEBUG;
 
-# Set DEBUG stream
-*DEBUG_STREAM = *STDERR ;
+*DEBUG_STREAM = *STDERR ; # Set DEBUG stream
 
-require Inline ;
 use Carp ;
 use Config ;
 use File::Copy ;
