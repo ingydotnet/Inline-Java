@@ -3,12 +3,11 @@ Makefile
 Java/InlineJavaServer.jar
 Java/InlineJavaUser.jar
 Java/classes/
-.*.swp
 blib/
 java.ts
 pm_to_blib
 _Inline_test/
 Java/default_j2sdk.pl
-Java/JNI.bs
-Java/JNI.c
-Java/JNI.o
+*.bs
+*.c
+*.o
