@@ -48,7 +48,7 @@ void check_exception_from_perl(JNIEnv *env, char *msg){
 	if ((*(env))->ExceptionCheck(env)){
 		(*(env))->ExceptionDescribe(env) ;
 		(*(env))->ExceptionClear(env) ;
-		croak(msg) ;
+		croak("%s", msg) ;
 	}
 }
 
