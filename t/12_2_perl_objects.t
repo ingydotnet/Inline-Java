@@ -110,7 +110,6 @@ __END__
 __Java__
 
 
-import java.io.* ;
 import org.perl.inline.java.* ;
 
 class t16 {
