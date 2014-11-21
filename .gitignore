@@ -1,5 +1,6 @@
 MYMETA.*
 Makefile
+Makefile.old
 Java/InlineJavaServer.jar
 Java/InlineJavaUser.jar
 Java/classes/
