@@ -70,8 +70,8 @@ the code slightly easier to read:
    END
 
 The source code can also be specified as a filename, a subroutine
-reference (sub routine should return source code), or an array
-reference (array contains lines of source code). This information
+reference (the subroutine should return source code), or an array
+reference (the array contains lines of source code). This information
 is detailed in 'perldoc Inline'.
 
 In order for C<Inline::Java> to function properly, it needs to know
@@ -93,14 +93,14 @@ correct directory
 
 
 If none of these are specified, C<Inline::Java> will use the Java
-2 SDK that was specified a install time (see below).
+2 SDK that was specified at install time (see below).
 
 
 =head1 DEFAULT JAVA 2 SDK
 
 When C<Inline::Java> was installed, the path to the Java 2 SDK that was
-used was stored in a file called default_j2sdk.pl that resides with
-the C<Inline::Java> module. You can find this file by using the following
+used was stored in a file called default_j2sdk.pl that resides within
+the C<Inline::Java> module. You can obtain this path by using the following
 command:
 
     % perl -MInline::Java=j2sdk
@@ -170,7 +170,7 @@ make use of the same JVM.
 =item startup_delay
 
 Specifies the maximum number of seconds that the Perl script
-will try to connect to the Java server. In other this is the
+will try to connect to the Java server. In other words this is the
 delay that Perl gives to the Java server to start. Default
 is 15 seconds.
 
@@ -193,7 +193,7 @@ environment variable.
 
 Toggles the execution mode. The default is to use the client/server
 mode. To use the JNI extension (you must have built it at install
-time though. See README and README.JNI for more information), set
+time though; see README and README.JNI for more information), set
 JNI to 1.
 
    Ex: jni => 1
@@ -230,7 +230,7 @@ sets the JNI option.
 
 =item shared_jvm
 
-This mode enables mutiple processes to share the same JVM. It was
+This mode enables multiple processes to share the same JVM. It was
 created mainly in order to be able to use C<Inline::Java> under
 mod_perl.
 
@@ -242,9 +242,9 @@ make use of the same JVM.
 
 =item start_jvm
 
-When used with shared_jvm, tells C<Inline::Java> that the JVM should
-already be running and that it should not attempt to start a new
-one. This option is useful in combination with command line interface
+When used with shared_jvm, tells C<Inline::Java> whether to start
+a new JVM (this is the default) or to expect that one is already
+running. This option is useful in combination with the command line interface
 described in the BUGS AND DEFICIENCIES section. Default is 1.
 
    Ex: start_jvm => 0
@@ -279,7 +279,7 @@ that (loosely) follow these definitions:
 
 =item debugger
 
-Starts jdb, (the Java debugger) instead of the regular Java JVM.
+Starts jdb (the Java debugger) instead of the regular Java JVM.
 This option will also cause the Java code to be compiled using the
 '-g' switch for extra debugging information. EXTRA_JAVA_ARGS can
 be used use to pass extra options to the debugger.
@@ -303,7 +303,7 @@ C<Inline::Java> learn about so that you can use them inside Perl.
 
 =item autostudy
 
-Makes C<Inline::Java> automatically study unknown classes it
+Makes C<Inline::Java> automatically study unknown classes when it
 encounters them.
 
    Ex: autostudy => 1
@@ -654,14 +654,10 @@ class to allow reading or writing from Perl. Here's an example:
 
 =for comment
 
-What's important to understand is that $@ actually contains a reference
-to the Throwable object that was thrown by Java. The getMessage() function
-is really a method of the java.lang.Exception class. So if Java is throwing
-a custom exception you have in your code, you will have access to that
-exception object's public methods just like any other Java object in
-C<Inline::Java>. It is also probably a good idea to undef $@ once you have
-treated a Java exception, or else the object still has a reference until
-$@ is reset by the next eval.
+What's important to understand is that the returned C<Inline::Java::Handle>
+object actually contains a reference to the Java reader or writer.
+It is probably a good idea to undef it once you have completed the I/O
+operations so that the underlying Java object may be freed.
    Z<>
 
 
@@ -691,7 +687,7 @@ script anymore. Here's how to use the 'studying' function:
 
 =for comment
 
-If you do not wish to put any Java code inside you Perl script, you must
+If you do not wish to put any Java code inside your Perl script, you must
 use the string 'study' as your code. This will skip the build section.
 
 You can also use the autostudy option to tell C<Inline::Java> that you wish
@@ -853,8 +849,8 @@ as a java.lang.Object:
 The reason why this will not work is simple. When C<Inline::Java> sees an
 array, it checks the Java type you are trying to match it against to validate
 the construction of your Perl list. But in this case, it can't validate
-the array because you're assigning it to an Object. You must use the 3
-parameter version of the coerce function to do this:
+the array because you're assigning it to an Object. You must use the
+three-parameter version of the coerce function to do this:
 
    $obj->{o} = Inline::Java::coerce(
      "java.lang.Object",
@@ -892,7 +888,7 @@ Interface) extension. This enables C<Inline::Java> to load the Java virtual
 machine as a shared object instead of running it as a stand-alone server.
 This brings an improvement in performance.
 
-If you have built the JNI extension, you must enable it explicitely by doing
+If you have built the JNI extension, you must enable it explicitly by doing
 one of the following:
 
 =over 4
