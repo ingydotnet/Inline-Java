@@ -223,6 +223,7 @@ WriteMakefile(
 	      web => 'https://github.com/ingydotnet/Inline-Java',
 	    },
 	  },
+	  no_index => { directory => [qw(Java/*)], file => [qw(Java/*.pm)] },
 	},
 ) ;
 
