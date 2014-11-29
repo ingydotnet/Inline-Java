@@ -7,7 +7,7 @@ use base qw(Inline Exporter);
 
 # Export the cast function if wanted
 our @EXPORT_OK = qw(cast coerce study_classes caught jar j2sdk);
-our $VERSION = '0.57';
+our $VERSION = '0.58';
 
 # DEBUG is set via the DEBUG config
 our $DEBUG = 0 unless defined $DEBUG;
