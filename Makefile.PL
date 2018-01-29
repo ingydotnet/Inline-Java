@@ -5,6 +5,7 @@ use File::Spec ;
 use Cwd ;
 use Config ;
 
+use lib '.'; # perl 5.26+
 require "Java/Portable.pm" ;
 
 print "\nWelcome to the Inline::Java installation procedure.\n\n" ;
