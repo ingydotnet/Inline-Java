@@ -236,7 +236,7 @@ print J2SDK <<J2SDK_PL;
 sub Inline::Java::get_default_j2sdk_so_dirs {
 	return (
 J2SDK_PL
-foreach my $d (@main::SO_DIRS){
+foreach my $d (sort @main::SO_DIRS){
 	$d =~ s/'/\'/g ;
 	print J2SDK "\t\t'$d',\n" ;
 }
