@@ -199,6 +199,7 @@ WriteMakefile(
 	NAME => 'Inline::Java',
 	VERSION_FROM => 'Java.pm',
 	MIN_PERL_VERSION => '5.008',
+	LICENSE => 'artistic_2',
 	DIR => ['Java'],
 	PREREQ_PM => {
 		Inline => 0.68,
