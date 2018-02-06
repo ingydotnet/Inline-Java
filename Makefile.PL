@@ -139,18 +139,6 @@ if (! -e $obj_dir){
 		die("Can't create object directory '$obj_dir': $!") ;
 }
 
-sub MY::top_targets {
-	my $this = shift ;
-
-	my $make = <<MAKE ;
-# Added by Inline::Java installation
-pure_all :: java
-MAKE
-
-	return $make . $this->MM::top_targets() ;
-}
-
-
 my $INSTALLSITEARCH = '' ;
 my $INST_ARCHLIB = '' ;
 sub MY::postamble {
@@ -160,16 +148,19 @@ sub MY::postamble {
 
 	my $make = <<MAKE ;
 # Added by Inline::Java installation
-JAVA_SRC=$java_src 
+JAVA_SRC=$java_src
 
 java.ts: \$(JAVA_SRC)
 	\@\$(MKPATH) $obj_dir
 	"$javac" -deprecation -g -d $obj_dir $src
-	"$jar" cf $server_arch -C $obj_dir org -C $obj_dir InlineJava.properties
-	"$jar" cf $user_arch -C $obj_dir InlineJavaUserClassLink.class
 	\@\$(TOUCH) java.ts
 
-java :: java.ts
+$server_arch : java.ts
+	"$jar" cf $server_arch -C $obj_dir org -C $obj_dir InlineJava.properties
+
+$user_arch : java.ts
+	"$jar" cf $user_arch -C $obj_dir InlineJavaUserClassLink.class
+
 MAKE
 
 	# Used for PerlNatives
