@@ -3,7 +3,6 @@ MANIFEST
 README
 README.JNI
 TODO
-META.yml
 Makefile.PL
 Java.pm
 Java.pod
