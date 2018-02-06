@@ -257,27 +257,25 @@ sub __get_member {
 	my $fields = $inline->get_fields($this->__get_private()->{class}) ;
 
 	my $types = $fields->{$key} ;
-	if ($types){
-		# We take the last one, which is more specific. Eventually
-		# we should use a scoring method just like for the methods
-		my $sign = undef ;
-		foreach my $s (values %{$types}){
-			if ((! defined($sign))||($s->{IDX} > $sign->{IDX})){
-				$sign = $s ;
-			}
-		}
-
-		my $proto = $sign->{TYPE} ;
-
-		my $ret = $this->__get_private()->{proto}->GetJavaMember($key, [$proto], [undef]) ;
-		Inline::Java::debug(3, "returning member (" . ($ret || '') . ")") ;
-	
-		return $ret ;
-	}
-	else{
+	if (!$types){
 		my $name = $this->__get_private()->{class} ;
 		croak "No public member variable '$key' defined for class '$name'" ;
 	}
+        # We take the last one, which is more specific. Eventually
+        # we should use a scoring method just like for the methods
+        my $sign = undef ;
+        foreach my $s (values %{$types}){
+                if ((! defined($sign))||($s->{IDX} > $sign->{IDX})){
+                        $sign = $s ;
+                }
+        }
+
+        my $proto = $sign->{TYPE} ;
+
+        my $ret = $this->__get_private()->{proto}->GetJavaMember($key, [$proto], [undef]) ;
+        Inline::Java::debug(3, "returning member (" . ($ret || '') . ")") ;
+
+        return $ret ;
 }
 
 
@@ -294,27 +292,25 @@ sub __set_member {
 	my $fields = $inline->get_fields($this->__get_private()->{class}) ;
 
 	my $types = $fields->{$key} ;
-	if ($types){
-		# We take the last one, which is more specific. Eventually
-		# we should use a scoring method just like for the methods
-		my $sign = undef ;
-		foreach my $s (values %{$types}){
-			if ((! defined($sign))||($s->{IDX} > $sign->{IDX})){
-				$sign = $s ;
-			}
-		}
-
-		my $proto = $sign->{TYPE} ;
-		my $new_args = undef ;
-		my $score = undef ;
-
-		($new_args, $score) = Inline::Java::Class::CastArguments([$value], [$proto], $this->__get_private()->{inline}) ;
-		$this->__get_private()->{proto}->SetJavaMember($key, [$proto], $new_args) ;
-	}
-	else{
+	if (!$types){
 		my $name = $this->__get_private()->{class} ;
 		croak "No public member variable '$key' defined for class '$name'" ;
 	}
+        # We take the last one, which is more specific. Eventually
+        # we should use a scoring method just like for the methods
+        my $sign = undef ;
+        foreach my $s (values %{$types}){
+                if ((! defined($sign))||($s->{IDX} > $sign->{IDX})){
+                        $sign = $s ;
+                }
+        }
+
+        my $proto = $sign->{TYPE} ;
+        my $new_args = undef ;
+        my $score = undef ;
+
+        ($new_args, $score) = Inline::Java::Class::CastArguments([$value], [$proto], $this->__get_private()->{inline}) ;
+        $this->__get_private()->{proto}->SetJavaMember($key, [$proto], $new_args) ;
 }
 
 

@@ -56,7 +56,7 @@ my $t = new types4() ;
 	$t->{_StringBuffer} = "stringbuffer" ;
 	is($t->{_StringBuffer}, "stringbuffer") ;
 	
-	my $obj1 = new obj14() ;
+	my $obj1 = obj14->new;
 	$t->{_Object} = $obj1 ;
 	is($t->{_Object}->get_data(), "obj1") ;
 	$t->{_Object} = "object" ;
