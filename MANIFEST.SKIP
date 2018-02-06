@@ -1,0 +1,6 @@
+#!include_default
+^bug/
+MANIFEST.SKIP.*
+Java/classes/InlineJava.properties
+Java/default_j2sdk.pl
+Java/MYMETA.*
