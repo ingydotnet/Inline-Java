@@ -261,14 +261,7 @@ sub __get_member {
 		my $name = $this->__get_private()->{class} ;
 		croak "No public member variable '$key' defined for class '$name'" ;
 	}
-        # We take the last one, which is more specific. Eventually
-        # we should use a scoring method just like for the methods
-        my $sign = undef ;
-        foreach my $s (values %{$types}){
-                if ((! defined($sign))||($s->{IDX} > $sign->{IDX})){
-                        $sign = $s ;
-                }
-        }
+        my $sign = _get_class($types);
 
         my $proto = $sign->{TYPE} ;
 
@@ -278,6 +271,18 @@ sub __get_member {
         return $ret ;
 }
 
+sub _get_class {
+        my ($types) = @_;
+        # We take the last one, which is more specific. Eventually
+        # we should use a scoring method just like for the methods
+        my $sign = undef ;
+        foreach my $s (values %{$types}){
+                if ((! defined($sign))||($s->{IDX} > $sign->{IDX})){
+                        $sign = $s ;
+                }
+        }
+        return $sign;
+}
 
 sub __set_member {
 	my $this = shift ;
@@ -296,14 +301,7 @@ sub __set_member {
 		my $name = $this->__get_private()->{class} ;
 		croak "No public member variable '$key' defined for class '$name'" ;
 	}
-        # We take the last one, which is more specific. Eventually
-        # we should use a scoring method just like for the methods
-        my $sign = undef ;
-        foreach my $s (values %{$types}){
-                if ((! defined($sign))||($s->{IDX} > $sign->{IDX})){
-                        $sign = $s ;
-                }
-        }
+        my $sign = _get_class($types);
 
         my $proto = $sign->{TYPE} ;
         my $new_args = undef ;
