@@ -10,7 +10,7 @@ use Inline (
 	STARTUP_DELAY => 20,	
 ) ;
 
-use Inline::Java qw(caught) ;
+use Inline::Java qw(cast caught) ;
 
 my $mtc_cnt = 0 ;
 my $mtc_mode = 0 ;
@@ -59,7 +59,7 @@ my $t = new t15() ;
 
 		eval {$t->bug()} ; like($@, qr/^bug/) ;
 
-		is($t->perlt()->add(5, 6), 11) ;
+		is(cast('t15', $t->perlt())->add(5, 6), 11) ;
 
 		eval {$t->perldummy()} ; like($@, qr/Can't propagate non-/) ; #'
 
