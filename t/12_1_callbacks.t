@@ -11,6 +11,7 @@ use Inline (
 ) ;
 
 use Inline::Java qw(cast caught) ;
+use Data::Dumper;
 
 my $mtc_cnt = 0 ;
 my $mtc_mode = 0 ;
@@ -52,10 +53,10 @@ my $t = new t15() ;
 				$msg = $@->getMessage() ;
 			}
 			else{
-				die $@ ;
+				$msg = $@ ;
 			}
 		}
-		is($msg, "throw java twister") ;
+		is($msg, "throw java twister") or diag Dumper $msg;
 
 		eval {$t->bug()} ; like($@, qr/^bug/) ;
 
