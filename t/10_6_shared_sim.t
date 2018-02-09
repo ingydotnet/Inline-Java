@@ -26,7 +26,7 @@ Inline->bind(
 	Java => 't/shared.java',
 	SHARED_JVM => 1,
 	PORT => 17893,
-	NAME => 't10',
+	NAME => 't10_6',
 ) ;
 {
 	my $t = new t10::t10() ;
@@ -42,7 +42,7 @@ Inline->bind(
 	Java => 't/shared.java',
 	SHARED_JVM => 1,
 	PORT => 17893,
-	NAME => 't10',
+	NAME => 't10_6',
 ) ;
 {
 	my $t = new t10::t10() ;
@@ -58,7 +58,7 @@ Inline->bind(
 	Java => 't/shared.java',
 	SHARED_JVM => 1,
 	PORT => 17893,
-	NAME => 't10',
+	NAME => 't10_6',
 ) ;
 {
 	my $t = new t10::t10() ;
