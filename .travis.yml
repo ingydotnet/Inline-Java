@@ -1,20 +1,16 @@
-language: perl
+language: java
 sudo: false
 jdk:
   - oraclejdk8
   - oraclejdk9
   - openjdk7
-perl:
-  - "5.14.0"
 matrix:
   include:
-    - perl: "5.14.0"
-      env: AUTHOR_TESTING=1 RELEASE_TESTING=1
-      env: COVERAGE=1
+    - jdk: "oraclejdk8"
+      env: AUTHOR_TESTING=1 RELEASE_TESTING=1 COVERAGE=1
 before_install:
   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
   - source ~/travis-perl-helpers/init
-  - build-perl
   - local-lib cache
   - perl -V
   - build-dist
@@ -25,6 +21,7 @@ install:
 before_script:
   - coverage-setup
 script:
+  - rm -rf _Inline_test
   - make
   - prove -b -j$(test-jobs) $(test-files)   # parallel testing
 after_success:
