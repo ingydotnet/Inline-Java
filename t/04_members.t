@@ -8,6 +8,8 @@ use Inline(
 	Java => 'DATA',
 ) ;
 
+use Inline::Java qw(cast);
+
 my $t = new types4() ;
 
 {
@@ -58,7 +60,7 @@ my $t = new types4() ;
 	
 	my $obj1 = obj14->new;
 	$t->{_Object} = $obj1 ;
-	is($t->{_Object}->get_data(), "obj1") ;
+	is(cast('obj14', $t->{_Object})->get_data(), "obj1") ;
 	$t->{_Object} = "object" ;
 	is($t->{_Object}, "object") ;
 	
