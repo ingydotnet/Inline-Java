@@ -298,9 +298,7 @@ class InlineJavaProtocol {
 					InlineJavaException ije = (InlineJavaException)t ;
 					throw ije ;
 				}
-				else{
-					SetResponse(new InlineJavaThrown(t)) ;
-				}
+				SetResponse(new InlineJavaThrown(t)) ;
 			}
 		}
 	}
@@ -312,22 +310,16 @@ class InlineJavaProtocol {
 		if (o == null){
 			return null ;
 		}
-		else {
-			Class got = o.getClass() ;
-			if (got.equals(want)){
-				return null ;
-			}
-			else {
-				boolean _public = (got.getModifiers() & Modifier.PUBLIC) != 0 ;
-				if ((_public)||(got.getPackage() == null)){
-					return null ;
-				}
-				else {
-					InlineJavaUtils.debug(3, "AutoCast: " + got.getName() + " -> " + want.getName()) ;
-					return want ;
-				}
-			}
+		Class got = o.getClass() ;
+		if (got.equals(want)){
+			return null ;
 		}
+		boolean _public = (got.getModifiers() & Modifier.PUBLIC) != 0 ;
+		if ((_public)||(got.getPackage() == null)){
+			return null ;
+		}
+		InlineJavaUtils.debug(3, "AutoCast: " + got.getName() + " -> " + want.getName()) ;
+		return want ;
 	}
 
 
