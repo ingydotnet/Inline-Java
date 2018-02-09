@@ -25,7 +25,7 @@ BEGIN {
 Inline->bind(
 	Java => 't/shared.java',
 	SHARED_JVM => 1,
-	PORT => 17891,
+	PORT => 17893,
 	NAME => 't10',
 ) ;
 {
@@ -41,7 +41,7 @@ Inline::Java::__clear_JVM() ;
 Inline->bind(
 	Java => 't/shared.java',
 	SHARED_JVM => 1,
-	PORT => 17891,
+	PORT => 17893,
 	NAME => 't10',
 ) ;
 {
@@ -57,7 +57,7 @@ Inline::Java::__clear_JVM() ;
 Inline->bind(
 	Java => 't/shared.java',
 	SHARED_JVM => 1,
-	PORT => 17891,
+	PORT => 17893,
 	NAME => 't10',
 ) ;
 {

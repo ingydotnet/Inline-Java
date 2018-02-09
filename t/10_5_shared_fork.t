@@ -29,7 +29,7 @@ use Inline Config =>
 use Inline (
 	Java => 't/shared.java',
 	SHARED_JVM => 1,
-	PORT => 17891,
+	PORT => 17892,
 	NAME => 't10',
 ) ;
 
