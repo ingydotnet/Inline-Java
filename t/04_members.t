@@ -1,9 +1,6 @@
 use strict ;
 use Test::More tests => 28;
 
-use Inline Config => 
-           DIRECTORY => './_Inline_test';
-
 use Inline(
 	Java => 'DATA',
 ) ;

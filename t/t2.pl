@@ -2,13 +2,6 @@ use strict ;
 
 use blib ;
 
-
-use Inline Config => 
-	DIRECTORY => './_Inline_test',
-	# PRINT_INFO => 1,
-;
-
-
 BEGIN {
 	$Inline::Java::DEBUG = 1 ;
 }

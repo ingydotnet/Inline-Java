@@ -3,15 +3,7 @@ use strict ;
 use blib ;
 use Getopt::Long ;
 
-BEGIN {
-	mkdir('./_Inline_test', 0777) unless -e './_Inline_test';
-}
-
-use Inline Config => 
-           DIRECTORY => './_Inline_test';
-
 require Inline::Java ;
-								  
 
 my %opts = () ;
 GetOptions (\%opts,
@@ -19,7 +11,6 @@ GetOptions (\%opts,
 	"s=i",    	# skip to
 	"o=i",    	# only
 ) ;
-
 
 my $skip_to = $opts{s} || 0 ;
 my $cnt = -1 ;

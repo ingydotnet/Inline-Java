@@ -8,7 +8,7 @@ Java/classes/
 blib/
 java.ts
 pm_to_blib
-_Inline_test/
+_Inline/
 Java/default_j2sdk.pl
 *.bs
 *.c

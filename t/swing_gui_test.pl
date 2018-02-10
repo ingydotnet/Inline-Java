@@ -2,14 +2,6 @@ use strict ;
 
 use blib ;
 
-BEGIN {
-	# $ENV{PERL_INLINE_JAVA_JNI} = 0 ;
-	mkdir('./_Inline_test', 0777) unless -e './_Inline_test';
-}
-
-use Inline Config => 
-           DIRECTORY => './_Inline_test' ;
-
 use Inline (
 	Java => 'DATA',
 	STUDY => [
@@ -18,14 +10,12 @@ use Inline (
 	],
 ) ;
 
-
 my $f = HelloJava1->get_frame("HelloJava1") ;
 $f->setSize(140, 100) ;
 $f->getContentPane()->add(new HelloJava1()) ;
 $f->setVisible(1) ;
 
 <STDIN> ;
-
 
 __END__
 

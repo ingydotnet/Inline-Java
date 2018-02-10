@@ -4,22 +4,11 @@ use strict ;
 
 use blib ;
 
-
-BEGIN {
-	mkdir('./_Inline_test', 0777) unless -e './_Inline_test';
-}
-
-
-use Inline Config => 
-           DIRECTORY => './_Inline_test' ;
-
-
 use Inline (
 	Java => 'DATA',
 	NAME => "shared_jvm_test",
 	SHARED_JVM => 1,
 ) ;
-
 
 $shared_jvm_test::t::i = 0 ;
 

@@ -21,7 +21,6 @@ install:
 before_script:
   - coverage-setup
 script:
-  - rm -rf _Inline_test
   - make
   - prove -b -j$(test-jobs) $(test-files)   # parallel testing
 after_success:

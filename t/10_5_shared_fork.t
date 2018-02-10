@@ -22,10 +22,6 @@ BEGIN {
 	}
 }
 
-
-use Inline Config => 
-           DIRECTORY => './_Inline_test' ;
-
 use Inline (
 	Java => 't/shared.java',
 	SHARED_JVM => 1,

@@ -1,9 +1,6 @@
 use strict ;
 use Test::More tests => 37;
 
-use Inline Config => 
-           DIRECTORY => './_Inline_test';
-
 use Inline (
 	Java => 'DATA',
 	STUDY => ['org.perl.inline.java.InlineJavaPerlCaller'],

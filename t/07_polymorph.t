@@ -2,9 +2,6 @@ use strict;
 use warnings;
 use Test::More tests => 24;
 
-use Inline Config => 
-           DIRECTORY => './_Inline_test';
-
 use Inline(
 	Java => 'DATA',
 	STUDY => ['java.util.HashMap', 'java.lang.String'],
