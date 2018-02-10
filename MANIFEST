@@ -50,6 +50,7 @@ Makefile.PL
 MANIFEST
 README
 README.JNI
+t/00-report-prereqs.t
 t/01_init.t
 t/02_primitives.t
 t/02_primitives_1_4.t
