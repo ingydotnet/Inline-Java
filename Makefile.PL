@@ -192,7 +192,6 @@ WriteMakefile(
 	DIR => ['Java'],
 	PREREQ_PM => {
 		Inline => 0.68,
-		'Inline::C' => 0.62,
 		Test => 1.13,
 		'MIME::Base64' => 0,
 	},
