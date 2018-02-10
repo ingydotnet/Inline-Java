@@ -298,7 +298,16 @@ class InlineJavaProtocol {
 					InlineJavaException ije = (InlineJavaException)t ;
 					throw ije ;
 				}
-				SetResponse(new InlineJavaThrown(t)) ;
+				Throwable retval = t;
+				if (t instanceof InlineJavaPerlException){
+					InlineJavaPerlException ijpe = (InlineJavaPerlException)t;
+					Object eo = ijpe.GetObject();
+                                        if (eo instanceof Throwable) {
+                                          retval = (Throwable)eo;
+                                        }
+					InlineJavaUtils.debug(2, "InlineJavaPerlException " + retval.toString()) ;
+				}
+				SetResponse(new InlineJavaThrown(retval)) ;
 			}
 		}
 	}
