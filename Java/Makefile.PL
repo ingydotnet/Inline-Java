@@ -4,9 +4,8 @@ use File::Find ;
 use strict ;
 use File::Spec ;
 
-require "Portable.pm" ;
 # The file we just produced in the parent Makefile.PL
-require "default_j2sdk.pl" ;
+require "Inline/Java/default_j2sdk.pl" ;
 
 my $build_jni = $main::build_jni ;
 my $build_perl_natives = $main::build_perl_natives ;

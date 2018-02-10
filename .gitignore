@@ -2,14 +2,14 @@ MYMETA.*
 MANIFEST*.bak
 Makefile
 Makefile.old
-Java/InlineJavaServer.jar
-Java/InlineJavaUser.jar
+lib/Inline/Java/InlineJavaServer.jar
+lib/Inline/Java/InlineJavaUser.jar
 Java/classes/
 blib/
 java.ts
 pm_to_blib
 _Inline/
-Java/default_j2sdk.pl
+lib/Inline/Java/default_j2sdk.pl
 *.bs
 *.c
 *.o
