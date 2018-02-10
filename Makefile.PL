@@ -213,9 +213,15 @@ WriteMakefile(
 	      web => 'https://github.com/ingydotnet/Inline-Java',
 	    },
 	  },
+          prereqs => {
+            develop => {
+              requires => {
+                'Test::CheckManifest' => '0.9',
+              },
+            },
+          },
 	},
 ) ;
-
 
 # Add the so_dirs to the default_j2sdk.pl file.
 open(J2SDK, ">>$def_jdk") or
