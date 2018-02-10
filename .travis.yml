@@ -22,6 +22,7 @@ before_script:
   - coverage-setup
 script:
   - make
+  - prove -b t/01_init.t # set up config as parallel races and breaks
   - prove -b -j$(test-jobs) $(test-files)   # parallel testing
 after_success:
   - coverage-report
