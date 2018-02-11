@@ -25,13 +25,13 @@ use Inline(
 package toto ;
 
 use Inline(
-	Java => 'STUDY',
+	Java => 'study',
 	AUTOSTUDY => 1,
 	STUDY => ['t.types'],
 	CLASSPATH => '.',
 ) ;
 use Inline(
-	Java => 'STUDY',
+	Java => 'study',
 	AUTOSTUDY => 1,
 	STUDY => ['t.types'],
 	CLASSPATH => '.',

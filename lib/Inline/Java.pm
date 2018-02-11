@@ -330,7 +330,7 @@ sub build {
 
 	my $code = $o->get_api('code');
 	my $pcode = $code;
-	my $study_only = ($code =~ /^(STUDY|SERVER)$/);
+	my $study_only = ($code =~ /^(STUDY|SERVER)$/i);
 	my $source = ($study_only ? '' : $o->get_api('modfname') . ".java");
 
 	# Parse code to check for public class
