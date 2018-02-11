@@ -677,6 +677,7 @@ script anymore. Here's how to use the 'studying' function:
    use Inline (
       Java => 'study',
       study => ['java.util.HashMap'],
+      autostudy => 1,
    ) ;
 
    my $hm = new java::util::HashMap() ;
