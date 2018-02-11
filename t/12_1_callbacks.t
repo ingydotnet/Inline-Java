@@ -5,6 +5,7 @@ use Inline (
 	Java => 'DATA',
 	STUDY => ['org.perl.inline.java.InlineJavaPerlCaller'],
 	STARTUP_DELAY => 20,	
+	EXTRA_JAVA_ARGS => '-Xmx256m',
 ) ;
 
 use Inline::Java qw(cast caught) ;
