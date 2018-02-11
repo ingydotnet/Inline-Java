@@ -1,8 +1,11 @@
 #!include_default
+^Java/PerlInterpreter/_Inline/
+^Java/PerlInterpreter/MYMETA.*
 ^\.git
 ^\.travis\.yml$
 ^_Inline
 MANIFEST.SKIP.*
+MANIFEST.bak
 Java/classes/InlineJava.properties
 Java/.*\.jar$
 Makefile\.old$
