@@ -11,10 +11,10 @@ class Lower
 
 }
 
-public class Higher extends Lower {
+public class t16subclass extends Lower {
 	private int b;
 
-	public Higher(int p, int q) {
+	public t16subclass(int p, int q) {
 		super(p);
 		this.b = q;
 	}

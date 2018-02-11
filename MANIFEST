@@ -70,6 +70,7 @@ t/12_2_perl_objects.t
 t/13_handles.t
 t/14_encoding.t
 t/15_native_doubles.t
+t/16_subclass.t
 t/99_end.t
 t/CGI.cgi
 t/counter.java
@@ -85,6 +86,8 @@ t/swing_callback.pl
 t/swing_gui_test.pl
 t/t1.pl
 t/t13.txt
+t/t16subclass.jar
+t/t16subclass.java
 t/t2.pl
 t/t3.pl
 t/t4.pl
