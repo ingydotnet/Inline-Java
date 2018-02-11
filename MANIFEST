@@ -82,7 +82,6 @@ t/16_subclass.t
 t/99_end.t
 t/no_const.class
 t/no_const.java
-t/pod_test.pl
 t/shared.java
 t/t13.txt
 t/t16subclass.jar
@@ -91,3 +90,4 @@ t/types.class
 t/types.java
 TODO
 xt/manifest.t
+xt/pod_test.t
