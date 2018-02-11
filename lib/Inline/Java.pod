@@ -644,13 +644,12 @@ class to allow reading or writing from Perl. Here's an example:
       }
    END
 
-    my $o = Pod_91->getReader('data.txt') ;
-    my $h = new Inline::Java::Handle($o) ;
-    while (<$h>){
-      chomp($_) ;
-      print($_ . "\n") ; # prints data
-    }
-
+    my $o = Pod_91->getReader('t/t13.txt') ;
+    my $h = Inline::Java::Handle->new($o) ;
+    # read one line
+    my $text = <$h>;
+    chomp $text;
+    print($text . "\n") ; # prints 1
 
 =for comment
 
