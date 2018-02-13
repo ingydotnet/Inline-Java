@@ -20,7 +20,7 @@ public class InlineJavaServer {
 	private boolean finished = false ;
 	private ServerSocket server_socket = null ;
 	private InlineJavaUserClassLoader ijucl = null ;
-	private HashMap thread_objects = new HashMap() ;
+	private HashMap<Thread, HashMap<Integer, Object>> thread_objects = new HashMap<>();
 	private int objid = 1 ;
 	private boolean jni = false ;
 	private Thread creator = null ;
@@ -218,7 +218,7 @@ public class InlineJavaServer {
 
 
 	synchronized int PutObject(Object o) throws InlineJavaException {
-		HashMap h = (HashMap)thread_objects.get(Thread.currentThread()) ;
+		HashMap<Integer, Object> h = (HashMap<Integer, Object>)thread_objects.get(Thread.currentThread()) ;
 
 		int id = objid ;
 		if (h == null){
@@ -291,7 +291,7 @@ public class InlineJavaServer {
 		calls this method also.
 	*/
 	synchronized void AddThread(Thread t){
-		thread_objects.put(t, new HashMap()) ;
+		thread_objects.put(t, new HashMap<Integer, Object>()) ;
 		InlineJavaPerlCaller.AddThread(t) ;
 	}
 

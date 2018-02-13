@@ -12,7 +12,7 @@ import java.lang.reflect.* ;
 	so that it will execute them.
 */
 class InlineJavaUserClassLoader extends URLClassLoader {
-    private HashMap urls = new HashMap() ;
+    private HashMap<URL, String> urls = new HashMap<>() ;
 
 	private Object link = null ;
 	private Method invoke = null ;

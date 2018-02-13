@@ -480,13 +480,13 @@ are not known to C<Inline::Java>. This is also true for return types:
          }
 
          public HashMap get_hash(){
-            HashMap h = new HashMap() ;
+            HashMap<String, String> h = new HashMap<>() ;
             h.put("key", "value") ;
 
             return h ;
          }
 
-         public String do_stuff_to_hash(HashMap h){
+         public String do_stuff_to_hash(HashMap<String, String> h){
            return (String)h.get("key") ;
          }
       }

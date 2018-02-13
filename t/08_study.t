@@ -101,8 +101,8 @@ public class a8 {
 	}
 
 	public HashMap [] sb(){
-		HashMap h1 = new HashMap() ;
-		HashMap h2 = new HashMap() ;
+		HashMap<String, String> h1 = new HashMap<>() ;
+		HashMap<String, String> h2 = new HashMap<>() ;
 		h1.put("toto", "titi") ;
 		h2.put("tata", "tete") ;
 

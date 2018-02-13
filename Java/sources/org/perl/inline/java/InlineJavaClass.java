@@ -8,7 +8,7 @@ class InlineJavaClass {
 	private InlineJavaServer ijs ;
 	private InlineJavaProtocol ijp ;
 
-	static private HashMap class2jni_code = new HashMap() ;
+	static private HashMap<Class, String> class2jni_code = new HashMap<>() ;
 	static {
 		class2jni_code.put(byte.class, "B") ;
 		class2jni_code.put(short.class, "S") ;
@@ -21,7 +21,7 @@ class InlineJavaClass {
 		class2jni_code.put(void.class, "V") ;
 	} ;
 
-	static private HashMap class2wrapper = new HashMap() ;
+	static private HashMap<Class, Class> class2wrapper = new HashMap<>() ;
 	static {
 		class2wrapper.put(byte.class, java.lang.Byte.class) ;
 		class2wrapper.put(short.class, java.lang.Short.class) ;
@@ -34,7 +34,7 @@ class InlineJavaClass {
 		class2wrapper.put(void.class, java.lang.Void.class) ;
 	} ;
 
-	static private HashMap name2class = new HashMap() ;
+	static private HashMap<String, Class> name2class = new HashMap<>() ;
 	static {
 		name2class.put("byte", byte.class) ;
 		name2class.put("short", short.class) ;
@@ -388,7 +388,7 @@ class InlineJavaClass {
 	/*
 		Determines if class is of numerical type.
 	*/
-	static private HashMap numeric_classes = new HashMap() ;
+	static private HashMap<Class, Boolean> numeric_classes = new HashMap<>() ;
 	static {
 		Class [] list = {
 			java.lang.Byte.class,
@@ -414,7 +414,7 @@ class InlineJavaClass {
 	}
 
 
-	static private HashMap double_classes = new HashMap() ;
+	static private HashMap<Class, Boolean> double_classes = new HashMap<>();
 	static {
 		Class [] list = {
 			java.lang.Double.class,
@@ -432,7 +432,7 @@ class InlineJavaClass {
 	/*
 		Class is String or StringBuffer
 	*/
-	static private HashMap string_classes = new HashMap() ;
+	static private HashMap<Class, Boolean> string_classes = new HashMap<>();
 	static {
 		Class csq = ValidateClassQuiet("java.lang.CharSequence") ;
 		Class [] list = {
@@ -452,7 +452,7 @@ class InlineJavaClass {
 	/*
 		Class is Char
 	*/
-	static private HashMap char_classes = new HashMap() ;
+	static private HashMap<Class, Boolean> char_classes = new HashMap<>() ;
 	static {
 		Class [] list = {
 			java.lang.Character.class,
@@ -470,7 +470,7 @@ class InlineJavaClass {
 	/*
 		Class is Bool
 	*/
-	static private HashMap bool_classes = new HashMap() ;
+	static private HashMap<Class, Boolean> bool_classes = new HashMap<>() ;
 	static {
 		Class [] list = {
 			java.lang.Boolean.class,
