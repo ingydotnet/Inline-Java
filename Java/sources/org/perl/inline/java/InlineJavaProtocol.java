@@ -18,7 +18,7 @@ class InlineJavaProtocol {
 
 	private final String encoding = "UTF-8" ;
 
-	static private Map<String, Member> member_cache = Collections.synchronizedMap(new HashMap<>()) ;
+	static private Map<String, Member> member_cache = Collections.synchronizedMap(new HashMap<String, Member>()) ;
 	static private final String report_version = "V2" ;
 
 	InlineJavaProtocol(InlineJavaServer _ijs, String _cmd) {
