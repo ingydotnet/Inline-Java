@@ -132,7 +132,7 @@ class InlineJavaPerlInterpreterTests implements Runnable {
 
 			pi.StartCallbackLoop();
 
-			ArrayList a = new ArrayList() ;
+			ArrayList<Integer> a = new ArrayList<>() ;
 			for (int i = 0 ; i < 100 ; i++){
 				a.add(Integer.valueOf(i * 2)) ;
 			}

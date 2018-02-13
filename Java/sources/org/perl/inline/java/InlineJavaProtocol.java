@@ -106,7 +106,7 @@ class InlineJavaProtocol {
 
 		StringTokenizer st3 = new StringTokenizer(Decode(st2.nextToken()), " ") ;
 
-		ArrayList class_list = new ArrayList() ;
+		ArrayList<String> class_list = new ArrayList<>() ;
 		while (st3.hasMoreTokens()){
 			String c = st3.nextToken() ;
 			class_list.add(class_list.size(), c) ;
@@ -209,7 +209,7 @@ class InlineJavaProtocol {
 		Class c = ijc.ValidateClass(class_name) ;
 
 		if (! ijc.ClassIsArray(c)){
-			ArrayList f = ValidateMethod(true, c, class_name, st) ;
+			ArrayList<Object> f = ValidateMethod(true, c, class_name, st) ;
 			Object p[] = (Object [])f.get(1) ;
 			Class clist[] = (Class [])f.get(2) ;
 
@@ -274,7 +274,7 @@ class InlineJavaProtocol {
 			SetResponse(Integer.valueOf(length)) ;
 		}
 		else{
-			ArrayList f = ValidateMethod(false, c, method, st) ;
+			ArrayList<Object> f = ValidateMethod(false, c, method, st) ;
 			Method m = (Method)f.get(0) ;
 			String name = m.getName() ;	
 			Object p[] = (Object [])f.get(1) ;
@@ -475,7 +475,7 @@ class InlineJavaProtocol {
 			}
 		}
 		else{
-			ArrayList fl = ValidateMember(c, member, st) ;
+			ArrayList<Object> fl = ValidateMember(c, member, st) ;
 			Field f = (Field)fl.get(0) ;
 			String name = f.getName() ;
 			Object p = (Object)fl.get(1) ;
@@ -519,7 +519,7 @@ class InlineJavaProtocol {
 			SetResponse(ret, AutoCast(ret, eclass)) ;
 		}
 		else{
-			ArrayList fl = ValidateMember(c, member, st) ;
+			ArrayList<Object> fl = ValidateMember(c, member, st) ;
 
 			Field f = (Field)fl.get(0) ;
 			String name = f.getName() ;
@@ -588,20 +588,20 @@ class InlineJavaProtocol {
 	/*
 		Makes sure a method exists
 	*/
-	ArrayList ValidateMethod(boolean constructor, Class c, String name, StringTokenizer st) throws InlineJavaException {
-		ArrayList ret = new ArrayList() ;
+	ArrayList<Object> ValidateMethod(boolean constructor, Class c, String name, StringTokenizer st) throws InlineJavaException {
+		ArrayList<Object> ret = new ArrayList<>() ;
 
 		// Extract signature
 		String signature = st.nextToken() ;
 
 		// Extract the arguments
-		ArrayList args = new ArrayList() ;
+		ArrayList<String> args = new ArrayList<>() ;
 		while (st.hasMoreTokens()){
 			args.add(args.size(), st.nextToken()) ;
 		}
 
 		String key = c.getName() + "." + name + signature ;
-		ArrayList ml = new ArrayList() ;
+		ArrayList<Member> ml = new ArrayList<>() ;
 		Class params[] = null ;
 
 		Member cached = (Member)member_cache.get(key) ;
@@ -686,8 +686,8 @@ class InlineJavaProtocol {
 	/*
 		Makes sure a member exists
 	*/
-	ArrayList ValidateMember(Class c, String name, StringTokenizer st) throws InlineJavaException {
-		ArrayList ret = new ArrayList() ;
+	ArrayList<Object> ValidateMember(Class c, String name, StringTokenizer st) throws InlineJavaException {
+		ArrayList<Object> ret = new ArrayList<>() ;
 
 		// Extract member type
 		String type = st.nextToken() ;
@@ -696,7 +696,7 @@ class InlineJavaProtocol {
 		String arg = st.nextToken() ;
 
 		String key = type + " " + c.getName() + "." + name ;
-		ArrayList fl = new ArrayList() ;
+		ArrayList<Member> fl = new ArrayList<>() ;
 		Class param = null ;
 
 		Member cached = (Member)member_cache.get(key) ;

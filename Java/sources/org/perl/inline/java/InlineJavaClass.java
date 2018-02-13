@@ -130,7 +130,7 @@ class InlineJavaClass {
 	Object CastArgument(Class p, String argument) throws InlineJavaException {
 		Object ret = null ;
 	
-		ArrayList tokens = new ArrayList() ;
+		ArrayList<String> tokens = new ArrayList<>() ;
 		StringTokenizer st = new StringTokenizer(argument, ":") ;
 		for (int j = 0 ; st.hasMoreTokens() ; j++){
 			tokens.add(j, st.nextToken()) ;
