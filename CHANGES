@@ -1,6 +1,9 @@
 Revision history for Perl extension Inline::Java
 ------------------------------------------------
 
+0.62 
+ - zap (very) long-deprecated CallPerl interface
+
 0.61 Sat Feb 10 05:01:23 GMT 2018
  - manifest test and fix
  - no ask about JNI on build

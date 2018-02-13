@@ -49,26 +49,6 @@ public class InlineJavaPerlCaller {
 		return resources ;
 	}
 
-	/* Old interface */
-	/**
-	 * @deprecated  As of 0.48, replaced by {@link #CallPerlSub(String,Object[])}
-	 */
-	public Object CallPerl(String pkg, String method, Object args[]) throws InlineJavaException, InlineJavaPerlException {
-		return CallPerl(pkg, method, args, null) ;
-	}
-
-
-	/* Old interface */
-	/**
-	 * @deprecated  As of 0.48, replaced by {@link #CallPerlSub(String,Object[],Class)}
-	 */
-	public Object CallPerl(String pkg, String method, Object args[], String cast) throws InlineJavaException, InlineJavaPerlException {
-		InlineJavaCallback ijc = new InlineJavaCallback(
-			(String)null, pkg + "::" + method, args, 
-			(cast == null ? null : InlineJavaClass.ValidateClass(cast))) ; 
-		return CallPerl(ijc) ;
-	}
-
 
 	/* New interface */
 	public Object CallPerlSub(String sub, Object args[]) throws InlineJavaException, InlineJavaPerlException {
