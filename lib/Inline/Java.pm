@@ -359,7 +359,7 @@ sub build {
 			"javac" . Inline::Java::Portable::portable("EXE_EXTENSION"));
 		my $redir = Inline::Java::Portable::portable("IO_REDIR");
 
-		my $args = "-deprecation " . $o->get_java_config('EXTRA_JAVAC_ARGS');
+		my $args = "-deprecation -Xlint:unchecked " . $o->get_java_config('EXTRA_JAVAC_ARGS');
 		my $pinstall_dir = Inline::Java::Portable::portable("SUB_FIX_JAVA_PATH", $install_dir);
 		my $cmd = Inline::Java::Portable::portable("SUB_FIX_CMD_QUOTES", 
 			"\"$javac\" $args -d \"$pinstall_dir\" $source > cmd.out $redir");
