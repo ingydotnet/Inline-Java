@@ -207,7 +207,7 @@ public class InlineJavaServer {
 			throw new InlineJavaException("Can't find thread " + Thread.currentThread().getName() + "!") ;
 		}
 		else{
-			o = h.get(new Integer(id)) ;
+			o = h.get(Integer.valueOf(id)) ;
 			if (o == null){
 				throw new InlineJavaException("Can't find object " + id + " for thread " +Thread.currentThread().getName()) ;
 			}
@@ -225,7 +225,7 @@ public class InlineJavaServer {
 			throw new InlineJavaException("Can't find thread " + Thread.currentThread().getName() + "!") ;
 		}
 		else{
-			h.put(new Integer(objid), o) ;
+			h.put(Integer.valueOf(objid), o) ;
 			objid++ ;
 		}
 
@@ -241,7 +241,7 @@ public class InlineJavaServer {
 			throw new InlineJavaException("Can't find thread " + Thread.currentThread().getName() + "!") ;
 		}
 		else{
-			o = h.remove(new Integer(id)) ;
+			o = h.remove(Integer.valueOf(id)) ;
 			if (o == null){
 				throw new InlineJavaException("Can't find object " + id + " for thread " + Thread.currentThread().getName()) ;
 			}
@@ -310,9 +310,9 @@ public class InlineJavaServer {
 		int debug = Integer.parseInt(argv[0]) ;
 		String host = argv[1] ;
 		int port = Integer.parseInt(argv[2]) ;
-		boolean shared_jvm = new Boolean(argv[3]).booleanValue() ;
-		boolean priv = new Boolean(argv[4]).booleanValue() ;
-		boolean native_doubles = new Boolean(argv[5]).booleanValue() ;
+		boolean shared_jvm = Boolean.parseBoolean(argv[3]) ;
+		boolean priv = Boolean.parseBoolean(argv[4]) ;
+		boolean native_doubles = Boolean.parseBoolean(argv[5]) ;
 
 		InlineJavaServer ijs = new InlineJavaServer(debug, host, port, shared_jvm, priv, native_doubles) ;
 		ijs.RunMainLoop() ;

@@ -147,6 +147,6 @@ class types3 {
 	}
 
 	public Object _olong(){
-		return new Long("12345") ;
+		return Long.valueOf("12345") ;
 	}
 }

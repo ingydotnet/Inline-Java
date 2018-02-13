@@ -57,10 +57,9 @@ public class InlineJavaPerlObject extends InlineJavaPerlCaller {
 
 	protected void Dispose(boolean gc) throws InlineJavaPerlException, InlineJavaException {
 		if (id != 0){
-			CallPerlSub("Inline::Java::Callback::java_finalize", new Object [] {new Integer(id), new Boolean(gc)}) ;
+			CallPerlSub("Inline::Java::Callback::java_finalize", new Object [] {Integer.valueOf(id), Boolean.valueOf(gc)}) ;
 		}
 	}
-
 
 	protected void finalize() throws Throwable {
 		try {

@@ -128,12 +128,12 @@ public class InlineJavaPerlCaller {
 
 
 	public Object require_file(String file) throws InlineJavaPerlException, InlineJavaException {
-		return CallPerlSub("Inline::Java::Callback::java_require", new Object [] {file, new Boolean("true")}) ;
+		return CallPerlSub("Inline::Java::Callback::java_require", new Object [] {file, Boolean.TRUE}) ;
 	}
 	
 	
 	public Object require_module(String module) throws InlineJavaPerlException, InlineJavaException {
-		return CallPerlSub("Inline::Java::Callback::java_require", new Object [] {module, new Boolean("false")}) ;
+		return CallPerlSub("Inline::Java::Callback::java_require", new Object [] {module, Boolean.FALSE}) ;
 	}
 	
 

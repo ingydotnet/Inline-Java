@@ -96,7 +96,7 @@ Calls the specified subroutine with the supplied arguments and tries
 to create an object of type 'cast' with the result.
 
    /* Example */
-   Integer sum = (Integer)CallPerlSub("main::add", new Object [] {new Integer(5), new Integer(3)}, Integer.class) ;
+   Integer sum = (Integer)CallPerlSub("main::add", new Object [] {Integer.valueOf(5), Integer.valueOf(3)}, Integer.class) ;
       
 =item public Object CallPerlStaticMethod(String pkg, String method,
 Object args[], Class cast)
@@ -107,7 +107,7 @@ notation) with the supplied arguments and tries to create an object
 of type 'cast' with the result.
 
    /* Example */
-   Integer sum = (Integer)CallPerlStaticMethod("main", "add", new Object [] {new Integer(5), new Integer(3)}, Integer.class) ;
+   Integer sum = (Integer)CallPerlStaticMethod("main", "add", new Object [] {Integer.valueOf(5), Integer.valueOf(3)}, Integer.class) ;
 
 =item public Object eval(String code, Class cast) 
 throws InlineJavaPerlException, InlineJavaException

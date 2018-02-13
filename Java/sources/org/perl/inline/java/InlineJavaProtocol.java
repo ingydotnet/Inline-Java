@@ -192,12 +192,12 @@ class InlineJavaProtocol {
 		String is_it_a = st.nextToken() ;
 		Class d = ijc.ValidateClass(is_it_a) ;
 
-		SetResponse(new Integer(ijc.DoesExtend(c, d))) ;
+		SetResponse(Integer.valueOf(ijc.DoesExtend(c, d))) ;
 	}
 
 
 	void ObjectCount(StringTokenizer st) throws InlineJavaException {
-		SetResponse(new Integer(ijs.ObjectCount())) ;
+		SetResponse(Integer.valueOf(ijs.ObjectCount())) ;
 	}
 
 
@@ -271,7 +271,7 @@ class InlineJavaProtocol {
 
 		if ((ijc.ClassIsArray(c))&&(method.equals("getLength"))){
 			int length = Array.getLength(o) ;
-			SetResponse(new Integer(length)) ;
+			SetResponse(Integer.valueOf(length)) ;
 		}
 		else{
 			ArrayList f = ValidateMethod(false, c, method, st) ;
@@ -374,10 +374,10 @@ class InlineJavaProtocol {
 			ret = InlineJavaHandle.makeBuffered(o) ;
 			if (ret != o){
 				int buf_id = ijs.PutObject(ret) ;
-				ret = new Integer(buf_id) ;
+				ret = Integer.valueOf(buf_id) ;
 			}
 			else {
-				ret = new Integer(id) ;
+				ret = Integer.valueOf(id) ;
 			}
 		}
 		catch (java.io.IOException e){
@@ -412,7 +412,7 @@ class InlineJavaProtocol {
 		Object ret = null ;
 		try {
 			int len = InlineJavaHandle.write(o, arg.toString()) ;
-			ret = new Integer(len) ;
+			ret = Integer.valueOf(len) ;
 		}
 		catch (java.io.IOException e){
 			ret = new InlineJavaThrown(e) ;
