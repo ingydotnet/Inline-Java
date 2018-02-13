@@ -61,6 +61,8 @@ public class InlineJavaPerlObject extends InlineJavaPerlCaller {
 		}
 	}
 
+	/* unavoidable due to Perl reference-count behaviour */
+	@SuppressWarnings("deprecation")
 	protected void finalize() throws Throwable {
 		try {
 			Dispose(true) ;
