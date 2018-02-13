@@ -42,6 +42,10 @@ occurs the first time you run your Java code. The namespace is
 cached, and subsequent calls use the cached version.
    Z<>
 
+=head1 JDK COMPATIBILITY
+
+As of version 0.62, the minimum JDK supported is JDK 7. This is due to the
+"diamond operator" C<< <> >> used for generic C<ArrayList>s among others.
 
 =head1 USING THE Inline::Java MODULE
 
