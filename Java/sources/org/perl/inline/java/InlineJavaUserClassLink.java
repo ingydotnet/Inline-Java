@@ -32,7 +32,7 @@ public class InlineJavaUserClassLink {
 	}
 
 
-	public Object create(Class p, Object args[], Class proto[]) throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public Object create(Class<?> p, Object args[], Class proto[]) throws NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		// This will allow usage of the default no-arg constructor
 		if (proto.length == 0){
 			return p.getDeclaredConstructor().newInstance() ;

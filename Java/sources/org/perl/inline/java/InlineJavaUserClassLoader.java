@@ -50,7 +50,7 @@ class InlineJavaUserClassLoader extends URLClassLoader {
 		if (link == null){
 			try {
 				InlineJavaUtils.debug(1, "loading InlineJavaUserClassLink via InlineJavaUserClassLoader") ;
-				Class c = Class.forName("InlineJavaUserClassLink", true, this) ;
+				Class<?> c = Class.forName("InlineJavaUserClassLink", true, this) ;
 				link = c.getDeclaredConstructor().newInstance() ;
 
 				invoke = find_method(c, "invoke") ;
