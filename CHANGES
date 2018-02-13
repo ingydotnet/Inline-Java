@@ -1,6 +1,9 @@
 Revision history for Perl extension Inline::Java
 ------------------------------------------------
 
+0.63 Tue Feb 13 05:52:42 GMT 2018
+ - fix JDK 7 problem with "<>" type on HashMap
+
 0.62 Tue Feb 13 05:37:24 GMT 2018
  - zap (very) long-deprecated CallPerl interface
  - type-constrain get*Constructor, all HashMap, ArrayList
