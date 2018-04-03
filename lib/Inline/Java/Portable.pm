@@ -241,9 +241,15 @@ my $map = {
 		JVM_SO				=>	"libjvm.dylib",
 		PRE_WHOLE_ARCHIVE	=>  '-Wl',
 		POST_WHOLE_ARCHIVE	=>  '-Wl',
-	    GOT_SYMLINK			=>	1,
+		GOT_SYMLINK			=>	1,
 		J2SDK_BIN        	=>  'Commands',
-		DEFAULT_J2SDK_DIR   =>  '/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK',
+		DEFAULT_J2SDK_DIR   =>  sub {
+			for my $suffix (qw(Current CurrentJDK)) {
+				my $dir = "/System/Library/Frameworks/JavaVM.framework/Versions/$suffix";
+				return $dir if -d $dir;
+			}
+			undef;
+		},
 		# Tim Bunce:
 		OTHERLDFLAGS		=>  '-framework JavaVM',
 	},
