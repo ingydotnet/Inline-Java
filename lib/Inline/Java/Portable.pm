@@ -193,6 +193,18 @@ my $map = {
 		GOT_SAFE_SIGNALS	=>	0,
 		PRE_WHOLE_ARCHIVE	=>  '',
 		POST_WHOLE_ARCHIVE	=>  '',
+		DEFAULT_J2SDK_DIR   => sub {
+                        return $ENV{JAVA_HOME} if $ENV{JAVA_HOME};
+                        my $reg;
+                        require Win32::TieRegistry;
+                        Win32::TieRegistry->import(Delimiter => "/", TiedRef => \$reg, ":KEY_");
+                        $reg = $reg->Open('', {Access => &KEY_READ});
+                        my $keybase = 'HKEY_LOCAL_MACHINE/SOFTWARE/JavaSoft/JDK';
+                        my $key = "$keybase//CurrentVersion";
+                        return undef unless my $version = $reg->{$key};
+                        my $keyhome = "$keybase/$version//JavaHome";
+                        scalar $reg->{$keyhome};
+		},
 	},
 	cygwin => {
 		ENV_VAR_PATH_SEP_CP	=>	';',
@@ -248,6 +260,7 @@ sub portable {
 	my $val = undef ;
 	if ((defined($map->{$^O}))&&(defined($map->{$^O}->{$key}))){
 		$val = $map->{$^O}->{$key} ;
+		$val = $val->() if ref($val) eq 'CODE' and $key !~ /^SUB_/;
 	}
 	else {
 		$val = $map->{_DEFAULT_}->{$key} ;
