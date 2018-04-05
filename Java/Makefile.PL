@@ -113,10 +113,11 @@ if ($build_jni){
 
 		# Cygwin: create gcc-compatible library wrapper for jvm.dll
 		if ($^O eq 'cygwin') {
-			my $dll = File::Spec->catfile(Cwd::cwd, 'libjvm.dll.a') ;
-			print "Creating '$dll' for cygwin.\n\n" ;
-			system("/usr/bin/dlltool --input-def jvm.def --kill-at --dllname jvm.dll --output-lib '$dll'") 
-				and print "Error attempting to create '$dll'\n" ;
+			my $lib = File::Spec->catfile(Cwd::cwd, 'libjvm.dll.a') ;
+			my $dll = File::Spec->catfile($files->{$jvm_so}->{selected}, 'jvm.dll') ;
+			print "Creating '$lib' for cygwin.\n\n" ;
+			system("/usr/bin/dlltool --kill-at --dllname jvm.dll --output-lib '$lib' '$dll'") 
+				and print "Error attempting to create '$lib'\n" ;
 		}
 
 		print "Building with:\n" ;
