@@ -26,6 +26,9 @@ matrix:
 #      jdk: oraclejdk9
 #      env: PERL_INLINE_JAVA_JNI=1
 before_install:
+  - perl -V
+  - curl --insecure -L http://cpanmin.us | sudo perl - -n App::cpanminus App::perlbrew
+  - perlbrew --version && perlbrew install -n --noman 5.18.2 && perlbrew list && perlbrew use 5.18.2
   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
   - source ~/travis-perl-helpers/init
   - local-lib cache
