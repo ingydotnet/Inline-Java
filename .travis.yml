@@ -2,27 +2,27 @@ language: generic
 sudo: false
 matrix:
   include:
-    - os: linux
-      language: java
-      jdk: openjdk7
-    - os: linux
-      language: java
-      jdk: oraclejdk8
-    - os: linux
-      language: java
-      jdk: oraclejdk9
-    - os: linux
-      language: java
-      jdk: oraclejdk8
-      env: COVERAGE=1
-    - os: linux
-      language: java
-      jdk: oraclejdk8
-      env: AUTHOR_TESTING=1 RELEASE_TESTING=1
-    - os: linux
-      language: java
-      jdk: oraclejdk9
-      env: PERL_INLINE_JAVA_JNI=1
+#    - os: linux
+#      language: java
+#      jdk: openjdk7
+#    - os: linux
+#      language: java
+#      jdk: oraclejdk8
+#    - os: linux
+#      language: java
+#      jdk: oraclejdk9
+#    - os: linux
+#      language: java
+#      jdk: oraclejdk8
+#      env: COVERAGE=1
+#    - os: linux
+#      language: java
+#      jdk: oraclejdk8
+#      env: AUTHOR_TESTING=1 RELEASE_TESTING=1
+#    - os: linux
+#      language: java
+#      jdk: oraclejdk9
+#      env: PERL_INLINE_JAVA_JNI=1
 before_install:
   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
   - source ~/travis-perl-helpers/init
