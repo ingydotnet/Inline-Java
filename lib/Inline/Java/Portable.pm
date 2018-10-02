@@ -242,7 +242,14 @@ my $map = {
 		PRE_WHOLE_ARCHIVE	=>  '-Wl',
 		POST_WHOLE_ARCHIVE	=>  '-Wl',
 		GOT_SYMLINK			=>	1,
-		J2SDK_BIN        	=>  'Commands',
+		J2SDK_BIN        	=>  eval {
+			require "Inline/Java/default_j2sdk.pl";
+			for my $candidate (qw(Commands bin)) {
+				my $bin = Inline::Java::get_default_j2sdk() . "/$candidate";
+				return $candidate if -f $bin;
+			}
+			undef;
+		},
 		DEFAULT_J2SDK_DIR   =>  sub {
 			for my $suffix (qw(Current CurrentJDK)) {
 				my $dir = "/System/Library/Frameworks/JavaVM.framework/Versions/$suffix";

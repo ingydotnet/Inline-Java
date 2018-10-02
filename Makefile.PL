@@ -44,7 +44,7 @@ for (my $i = 0 ; $i < scalar(@ARGV) ; $i++){
 }
 
 if (! $jdk_dir){
-	my $try = $ENV{PERL_INLINE_JAVA_J2SDK} || $ENV{JAVA_HOME} 
+	my $try = $ENV{PERL_INLINE_JAVA_J2SDK} || $ENV{JAVA_HOME}
 		|| Inline::Java::Portable::portable('DEFAULT_J2SDK_DIR') ;
 	print "Using $try as J2SDK directory.\n\n" if $try ;
 	$jdk_dir = $try ;
@@ -52,8 +52,8 @@ if (! $jdk_dir){
 
 if (! $jdk_dir){
   print <<NO_J2SDK;
-A Java 2 SDK is required to install and use Inline::Java. Please 
-specify your Java 2 SDK installation directory using the J2SDK 
+A Java 2 SDK is required to install and use Inline::Java. Please
+specify your Java 2 SDK installation directory using the J2SDK
 option to Makefile.PL as such:
 
     perl Makefile.PL J2SDK=/path/to/your/j2sdk/installation
@@ -74,17 +74,6 @@ BAD_J2SDK
 }
 my $perl_jdk_dir = $jdk_dir ;
 $perl_jdk_dir =~ s/'/\'/g ;
-
-# Check directory
-my $jdk_bin = Inline::Java::Portable::portable("J2SDK_BIN") ;
-my $ext = Inline::Java::Portable::portable('EXE_EXTENSION') ;
-foreach my $f ('javac', 'jar', 'java'){
-	if (! -f File::Spec->catfile($jdk_dir, $jdk_bin, $f . $ext)){
-		my $bf = File::Spec->catfile($jdk_bin, $f . $ext) ;
-		print "Can't locate file '$bf' anywhere under '$jdk_dir'\n" ;
-	}
-}
-
 
 # Now we have the J2SDK directory and it exists.
 # We will create the default_j2sdk.pl file that
@@ -115,10 +104,19 @@ or change this default value.
 
 SAVE_J2SDK
 
+# Check directory
+my $jdk_bin = Inline::Java::Portable::portable("J2SDK_BIN") ;
+my $ext = Inline::Java::Portable::portable('EXE_EXTENSION') ;
+foreach my $f ('javac', 'jar', 'java'){
+	if (! -f File::Spec->catfile($jdk_dir, $jdk_bin, $f . $ext)){
+		my $bf = File::Spec->catfile($jdk_bin, $f . $ext) ;
+		print "Can't locate file '$bf' anywhere under '$jdk_dir'\n" ;
+	}
+}
 
 # We will now add the building of our Java files to the Makefile.
 my $javac = File::Spec->catfile($jdk_dir, $jdk_bin, 'javac' . $ext) ;
-my $jar = File::Spec->catfile($jdk_dir, $jdk_bin, 'jar' . $ext) ;                      
+my $jar = File::Spec->catfile($jdk_dir, $jdk_bin, 'jar' . $ext) ;
 my $src_dir = File::Spec->catdir('Java', 'sources', 'org', 'perl', 'inline', 'java') ;
 my @src = glob File::Spec->catfile($src_dir, '*.java') ;
 my $obj_dir = File::Spec->catdir('Java', 'classes') ;
@@ -164,7 +162,7 @@ MAKE
 }
 
 
-sub expand_macros { 
+sub expand_macros {
 	my $mm = shift ;
 	my $var = shift ;
 
@@ -247,7 +245,7 @@ close(J2SDK) ;
 
 
 # Create the properties that will be included in the jar.
-my @perlnatives_so_parts = ("auto", "Inline", "Java", "PerlNatives", 
+my @perlnatives_so_parts = ("auto", "Inline", "Java", "PerlNatives",
 	"PerlNatives." . Inline::Java::Portable::portable('SO_EXT')) ;
 my $install_perlnatives_so = File::Spec->catfile($INSTALLSITEARCH, @perlnatives_so_parts) ;
 $install_perlnatives_so = Inline::Java::Portable::portable("SUB_FIX_JAVA_PATH", $install_perlnatives_so) ;
