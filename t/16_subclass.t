@@ -8,7 +8,7 @@ use strict;
 use warnings;
 
 BEGIN {
-  $ENV{CLASSPATH} .= "t/t16subclass.jar";
+  $ENV{CLASSPATH} = "t/t16subclass.jar";
 }
 
 use Inline Java => 'STUDY', STUDY => ['t16subclass'];
